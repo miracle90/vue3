@@ -1,3 +1,3 @@
-import * as v from "./reactivity/index";
-
-console.log(v)
+export * from "./reactivity/index";
+export * from "./runtime-dom/index";
+export * from "./runtime-core/index";

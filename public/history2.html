@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- <script src="/node_modules/vue/dist/vue.global.js"></script> -->
+    <script src="/dist/vue.js"></script>
+    <script>
+      // let { createApp, reactive, h } = Vue;
+      let App = {
+        setup() {
+          let state = reactive({ name: "yy", age: 18 }); // proxy进行代理
+          setTimeout(() => {
+            state.name = '6666666666'
+          }, 1000);
+          return () => {
+            return h(
+              "div",
+              {
+                style: {
+                  color: "red",
+                },
+              },
+              state.name + ":" + state.age
+            );
+          };
+        },
+      };
+      // 创建应用
+      // 组件是怎样渲染的？
+      // runtime-dom 针对浏览器平台
+      // runtime-core 核心
+      createApp(App).mount("#app");
+    </script>
+  </body>
+</html>

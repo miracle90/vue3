@@ -8,9 +8,9 @@ export default {
   // 入口
   input: "src/index.ts",
   output: {
-    name: "VueReactivity", //window.VueReactivity
+    name: "Vue", // 挂载到window上
     file: path.resolve("dist/vue.js"), // 输出的文件路径
-    format: "es", // amd commonjs规范  默认将打包后的结果挂载到window上
+    format: "umd", // amd commonjs规范  默认将打包后的结果挂载到window上
     sourcemap: true, // 生成映射文件
   },
   // 插件
@@ -29,7 +29,7 @@ export default {
     }),
     // 启动服务
     serve({
-      open: true,
+      open: false,
       openPage: "/public/index.html",
       port: 3000,
       contentBase: "",

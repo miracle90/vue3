@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vue3</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- <script src="/node_modules/@vue/reactivity/dist/reactivity.global.js"></script> -->
+    <script src="/dist/vue.js"></script>
+    <script>
+      // const { reactive, effect, ref, computed, toRefs } = VueReactivity;
+      // const state = reactive({
+      //   name: "yy",
+      //   age: 18,
+      //   hobby: [1, 2,3],
+      //   address: '南园村',
+      //   a: {
+      //     b: 2
+      //   }
+      // });
+      const state = reactive([1, 2, 3])
+      // state.address = '科技园'
+      // state.hobby[5] = 9
+      effect(() => {
+        app.innerHTML = state
+        // 针对数组，effect中使用了length，改length会生效，但是没有用length，不会触发
+        // app.innerHTML = state.length
+        // app.innerHTML = state.name + "今年" + state.age + "岁了";
+      });
+      // 当effect中依赖的数据发生变化，effect会重新执行
+      setTimeout(() => {
+        state[2] = 1
+        // state.address = "深圳";
+        // state.name = "bingo";
+      }, 1000);
+      // computed只有取值的时候才会执行，computed依赖effect的
+    </script>
+  </body>
+</html>
